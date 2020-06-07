@@ -1,0 +1,442 @@
+\documentclass[a4paper]{article} % this is used for comments
+\usepackage[utf8]{inputenc}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage[english,russian]{babel}
+
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Шрифты
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+\usepackage{physics}
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\DeclareMathOperator{\Lin}{\mathrm{Lin}}
+\DeclareMathOperator{\Linp}{\Lin^{\perp}}
+\DeclareMathOperator*\plim{plim}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\sgn}{sign}
+\DeclareMathOperator{\sign}{sign}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\amn}{arg\,min}
+\DeclareMathOperator*{\amx}{arg\,max}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\pCorr}{pCorr}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cBinom}{\mathcal{Binom}}
+\newcommand{\cBin}{\cBinom}
+\newcommand{\cPois}{\mathcal{Pois}}
+\newcommand{\cBeta}{\mathcal{Beta}}
+\newcommand{\cGamma}{\mathcal{Gamma}}
+
+\newcommand \R{\mathbb{R}}
+\newcommand \N{\mathbb{N}}
+\newcommand \Z{\mathbb{Z}}
+
+\newcommand{\dx}[1]{\,\mathrm{d}#1} % для интеграла: маленький отступ и прямая d
+\newcommand{\ind}[1]{\mathbbm{1}_{\{#1\}}} % Индикатор события
+%\renewcommand{\to}{\rightarrow}
+\newcommand{\eqdef}{\mathrel{\stackrel{\rm def}=}}
+\newcommand{\iid}{\mathrel{\stackrel{\rm i.\,i.\,d.}\sim}}
+\newcommand{\const}{\mathrm{const}}
+
+% вместо горизонтальной делаем косую черточку в нестрогих неравенствах
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+
+\title{Homework}
+\author{Андрей Ильин, БЭК182}
+
+
+\begin{document}
+
+
+\maketitle
+
+
+
+\textbf{Midterm exam 2017-2018}
+
+AECBA BBCEB BBCCA BBCCC ABCBA EA?AC
+
+\begin{enumerate}
+
+    \item
+
+    По свойству дисперсий:
+
+    \[ \Var(X) = \E(X^2) - (\E(X))^2 \]
+
+    \[ (\E(X^2) = \Var(X) + \E(X))^2 = 10\]
+    
+    $\P(X^2 \geq 100)$ похоже на неравенство Маркова. $X^2 \geq 0$ всегда, следовательно, можем использовать эквивалент формуле из следствия неравенства.
+    
+    Получаем верхнюю границу диапозона:
+
+    \[\P(X^2 \geq 100) \leq \frac{\E(X^2)}{100} = 0.1 \]
+    
+    Следовательно, $\P(X^2 \geq 100)$ лежит в диапазоне $[0, 0.1]$
+
+    Ответ: A
+
+    \item
+
+    Так как $\xi$ имеет распределение Пуассона, поэтому:
+    \[ \E(\xi) =\lambda \]
+    \[ \Var\xi) =\lambda \]
+    
+    По свойству дисперсий:
+    
+    \[ \Var(\xi) = \E(\xi^2) - (\E(\xi))^2 \]
+    \[ \E(\xi^2) = \Var(\xi) + (\E(\xi))^2 = \lambda + \lambda^2 = \lambda \cdot (1 + \lambda)\]
+
+    Ответ: E
+
+    \item
+    
+    По формуле:
+
+    \[ \Corr(X+Y,Y) = \frac{\Cov(X+Y,Y)}{\sqrt{\Var(X+Y)\cdot \Var(Y)}} = \frac{6}{\sqrt{7\cdot 9}} = \frac{2}{\sqrt{7}} \]
+
+    \[ \Var(X+Y) = \Var(X) + \Var(Y) + 2 \cdot \Cov(X,Y) = 4 + 9 + 2 \cdot (-3) = 7 \]
+
+    \[\Cov(X+Y,Y) = \Cov(X,Y) + \Cov(Y,Y) = -3 + 9 = 6\]
+
+    Ответ: C
+
+    \item
+    
+    Функция плотности для любой случайной величины с нормальным распределением:
+    
+    \[ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}} \]
+    
+    У случайных величин со стандартным нормальным распределением $\sigma=1$ и $\mu=0$. При подстановке значений получаем ответ B.
+
+    Ответ: B
+
+    \item
+
+    Так как величина распределена равномерно по площади треугольника с координатами точек $(0;0), (0;4), (2;0)$:
+
+    \[f_{X,Y}(1,1) = \frac{1}{S} = \frac{1}{\frac{1}{2}\cdot 4\cdot 2} = \frac{1}{4}\]
+
+    Ответ: A
+
+    \item
+    
+    По определению события A, B и C независимы в совокупности, если
+    
+    \[ \P(ABC) = \P(A)\P(B)\P(C) \]
+
+    Ответ: B
+
+    \item
+
+    При построении графика функции плотности $\xi$ получается прямоугольник с высотой $\frac{1}{4}$
+    Площадь всего прямоугольника (от 0 до 4) должна быть равна одному, т. к. интеграл от $-\infty$ до $+\infty$ от функции плотности равен 1 по определению.
+    
+    \[\P({\xi\in[3,6]}) = \frac{1}{4}\]
+
+    Ответ: B
+
+    \item
+
+    $X, Y$ – случайные величины
+
+    \[\P(X=-5) = \ldots = \P(X=5) = \frac{1}{11}\]
+
+    \[\P(Y=-1) = \P(Y=0) = \P(Y=1) = \frac{1}{3}\]
+
+    Для $X + Y^2 = 2$ имеется всего три случая:
+    \[Y = -1, X = 1\]
+    \[Y = 0, X = 2\]
+    \[Y = 1, X = 1\]
+
+    Случайные величины независимые, следовательно 
+    \[\P(X + Y^2 = 2) = \frac{1}{11} \cdot\frac{1}{3} \cdot 3 = \frac{1}{11}\]
+
+    Ответ: C
+
+    \item
+    
+    Зная, что один сектор равен $\frac{\pi}{3}$ найдем число секторов:
+
+    \[\frac{2\pi}{\frac{\pi}{3}} = 6\]
+    
+    Все точки точки круга равновероятны, следовательно:
+
+    \[\P(\text{<<попадет в красный>>}) = \frac{1}{6}\]
+
+    Ответ: E
+
+    \item
+    
+    По формуле:
+
+    \[\P(A\cup B) = \P(A) + \P(B) - \P(A\cap B)\]
+
+    \[0.6 = 0.3 + \P(B) - 0.2\]
+    
+    Соответственно:
+
+    \[\P(B) = 0.5\]
+
+    Ответ: B
+
+    \item
+    
+    Используя свойства дисперсии:
+
+    \[\Var(2X - Y + 1) = 4\cdot \Var(X) + \Var(Y) - 4 \cdot \Cov(X,Y) \]
+    
+    \[\Var(2X - Y + 1) = 4 \cdot 4 + 9 - 4 \cdot (-3) = 37\]
+
+    Ответ: B
+
+    \item
+    
+    Согласно ЗБЧ:
+
+    \[\plim _{n\rightarrow +\infty}\frac{X_{1}^2 + \dots + X_{n}^2}{n} = \E(X^2) = \Var(X) +(\E(X))^2 = 1\]
+
+    Ответ: B
+
+    \item
+
+    Условная функция плотности:
+
+    \[f\left(x\mid y=\frac{1}{2}\right) = \frac{f\left(x,\frac{1}{2}\right)}{f_{y}\left(\frac{1}{2}\right)} = \frac{6x\cdot\frac{1}{4}}{\frac{3}{4}} = 2x\]
+
+    \[f_{y}(y) = \int_0^1 6\cdot x\cdot y^2 dx = \left.3 \cdot x^2 \cdot y^2\right|_0^1  = 3\cdot y^2, y \in [0;1] \]
+    
+    \[f_{y}\left(\frac{1}{2}\right) = 3 \cdot \left(\frac{1}{2}\right)^2 = \frac{3}{4}\]
+
+    Ответ: C
+
+    \item
+
+    В условии пропущено, чему равно $n$. Без этого можно подогнать любой ответ. Пусть $n = 100$.
+
+    $X_{1}, X_{2}, \ldots$ независимы и одинаково распределены
+
+    \[\E(X_i) = 4\]
+
+    \[\Var(X_i) = 100\]
+
+    \[\P(\Bar X_n \leq 5) - ?\]
+
+    \[\Bar X \sim \N\left(4,\frac{100}{100}\right)\]
+    
+    По таблице для нормального распределения:
+
+    \[\P\left(\frac{\Bar X - 4}{\sqrt{1}} \leq \frac{5-4}{1}\right) = \P(\Z\leq 1) = 0.8413\]
+    
+    Ответ: C
+
+    \item
+    
+    Используя свойства ковариации:
+
+    \[\Cov(X+2Y, 2X + 3) = \Cov(X+2Y, 2X) = \Cov(X, 2X) + \Cov(2Y, 2X) \]
+    \[\Cov(X+2Y, 2X + 3) = 2 \cdot \Cov(X,X) + 4 \cdot \Cov(X,Y) = 2 \cdot 4 + 4 \cdot (-3) = -4\]
+
+    Ответ: A
+
+    \item
+    
+    Используя свойства математического ожидания:
+
+    \[\E((X-1)Y) = \E(XY - Y) = \E(XY) - \E(Y) = \Cov(X,Y) + \E(X)\cdot\E(Y) -\E(Y)\] 
+    \[\E((X-1)Y) = -3 + (-2) - 2 = -7\]
+
+    Ответ: B
+
+    \item
+    
+    По условию задачи, величина $X_{i}$ зависит от выпадемого на кубике значения следующим образом:
+
+    $X_{i} = 1$, если выпала <<6>>. $\P(X_{i} = 1) = \frac{1}{6}$
+
+    $X_{i} = 0$, иначе. $\P(X_{i} = 0) = \frac{5}{6}$
+
+    \[\P(X_{1} + X_{2} = 1) = \P(X_{1} = 0, X_{2} = 1) + \P(X_{1} = 1, X_{2} = 0) \]
+    \[\P(X_{1} + X_{2} = 1) = \frac{5}{6} \cdot \frac{1}{6} + \frac{1}{6} \cdot \frac{5}{6} = \frac{10}{36}\]
+    
+    \[\P(X_{1} = 0\mid X_{1} + X_{2} = 1) = \frac{\P(X_{1} = 0\cap X_{1} + X_{2} = 1)}{X_{1} + X_{2} = 1}) = \frac{1}{2}\]
+    
+    Аналогично для $\P(X_{1} = 0\mid X_{1} + X_{2} = 1)$, также равной $\frac{1}{2}$
+
+    Условный закон $X_{1}$ совпадает с распределением Бернулли с $p = \frac{1}{2}$
+    
+    Ответ: B
+
+    \item
+
+    $X$ и $Y$ – независимые случайные величины
+
+    \[X + Y \sim \N(\E(X) + \E(Y), \Var(X) + \Var(Y))\]
+
+    \[X + Y \sim \N(3,7)\]
+    
+    Используя таблицу для нормального распределения:
+
+    \[\P(X + Y\leq 3) = \P\left(\frac{X+Y-3}{\sqrt{7}} < \frac{3-3}{\sqrt{7}}\right) = (\Z\leq 0) = \frac{1}{2}\]
+
+    Ответ: C
+
+    \item
+
+    Имеется 5 кнопок:
+
+    $i=1,2,3 \quad \P(x_i = 6) =\frac{1}{2}$ (честные кубики)
+
+    $i=4 \quad \P(x_i = 6) =\frac{1}{2}$ (с увеличенной вероятностью выпадения 6)
+
+    $i=5 \quad \P(x_i = 6) =\frac{1}{10}$ (с увеличенной вероятностью выпадения 1)
+
+    \[\P(i=1,2,3\mid \text{<<6>>}) = \frac{\P(i=1,2,3\cap \text{<<6>>})}{\P(\text{<<6>>})} = \frac{\frac{3}{5}\cdot \frac{1}{6}}{\frac{1}{5}\cdot \frac{1}{6} + \frac{1}{5}\cdot \frac{1}{6} + \frac{1}{5}\cdot \frac{1}{6} + \frac{1}{5}\cdot \frac{1}{2} + \frac{1}{5}\cdot \frac{1}{10}} = \frac{\frac{3}{30}}{\frac{11}{50}} = \frac{5}{11} \]
+
+    Ответ: C
+
+    \item
+
+    A) $1\cdot1 - 2\cdot2 < 0$
+
+    B) $1\cdot9 - 4\cdot4 < 0$
+
+    C) $9\cdot6 - 7\cdot7 > 0$
+    
+    D) Не может быть отрицательной
+    
+    E) Должна быть симметричной
+
+    Ответ: C
+
+    \item
+    
+    Используя свойства математического ожидания:
+
+    \[\E(\alpha X + (1 - \alpha)Y) = \alpha \E(X) + (1-\alpha) \E(Y) = -\alpha + 2\cdot(1-\alpha) = 0\]
+    \[2 - 3\cdot\alpha = 0\]
+    \[\alpha = \frac{2}{3}\]
+
+    Ответ: A
+
+    \item
+    
+    $\xi$ имеет биноминальное распределение
+
+    \[\P(\xi = 0) = (1-p)^n = \frac{1}{4^2} = \frac{1}{16}\]
+
+    Ответ: B
+
+    \item
+    
+    Распределение Пуассона с $\lambda = 4$
+    
+    \[\P(x=k) = \lambda^k\cdot\frac{e^{-\lambda}}{k!}\]
+    \[\P(X\geq1) = 1 - \P(k=0) = 1 - e^{-4}\]
+
+    Ответ: C
+
+    \item
+    
+    $\xi$ имеет распределение Бернулли
+
+    \[\E(\xi^2) = \Var(\xi) + (\E(\xi))^2 = p\cdot (1-p) + p^2 = p\]
+
+    Ответ: B
+
+    \item
+    
+    $\xi$ имеет экспоненциальное распределение
+
+    \[\E(\xi) = \frac{1}{\lambda}\]
+    \[\Var(\xi) = \frac{1}{\lambda^2}\]
+
+    \[\E(\xi^2) = \Var(\xi) + (\E(\xi))^2 = \frac{1}{\lambda^2} + \frac{1}{\lambda^2} = \frac{2}{\lambda^2}\]
+
+    Ответ: A
+
+    \item
+
+    Зная, что один сектор равен $\frac{\pi}{3}$ найдем число секторов:
+
+    \[\frac{2\pi}{\frac{\pi}{3}} = 6\]
+
+    \[\P(\text{<<попадет в красный>>}) = \P(\text{<<попадет в синий>>}) =\frac{1}{6}\]
+
+    Невозможно попасть одновременно в две доли, следовательно , событие A и событие B несовместны.
+    
+    Ответ: E
+
+    \item
+
+    \[\E(XY) = \int_0^1\int_0^1 x\cdot y \cdot 6 \cdot x \cdot y^2 dxdy = \left.\int_0^1 2\cdot x^3 \cdot y^3 \right|_0^1 dy = \left.\frac{2\cdot y^4}{4}\right|_0^1 = \frac{1}{2}\]
+
+    Ответ: A
+
+    \item
+    
+    Используя свойства дисперсии:
+    \[\Var(\alpha X + (1-\alpha) Y) = \alpha^2 \Var(X) + (1-\alpha)^2 \Var(Y) + 2\cdot \Cov(X,Y)\cdot\alpha\cdot(1-\alpha)\]
+    \[\Var(\alpha X + (1-\alpha) Y) = 4\cdot\alpha^2 + 9\cdot(1-\alpha)^2 - 6\cdot\alpha\cdot(1-\alpha) = 4\cdot\alpha^2 + 9 - 18\cdot\alpha + 9\cdot\alpha^2 - 6\cdot\alpha + 6\cdot \alpha^2\]
+    \[\Var(\alpha X + (1-\alpha) Y) = 19\cdot\alpha^2 - 24\cdot\alpha + 9\]
+    Находим точку минимума:
+    \[\alpha^{*} = \frac{24}{38} =\frac{12}{19}\]
+
+    Ответ: F (нет верного ответа)
+
+    \item
+
+    \[\P(\text{<<без багажа>>}) = \frac{1}{4}\]
+    \[\P(\text{<<с рюкзаком>>}\mid\text{<<без багажа>>}) = 0.5\]
+    \[\P(\text{<<с рюкзаком>>}\mid\text{<<c багажом>>}) = \frac{55}{150}\]
+
+    \begin{multline*}
+        \P(\text{<<без рюкзака>>}) = \P(\text{<<без рюкзака>>}\mid\text{<<без багажа>>})\P(\text{<<без багажа>>}) +\\+ \P(\text{<<без рюкзака>>}\mid\text{<<с багажом>>})\P(\text{<<с багажом>>}) = \frac{1}{2}\cdot\frac{1}{4} + \frac{95}{150} \cdot\frac{3}{4} = 0.6
+    \end{multline*}
+   
+
+    Ответ: A
+
+    \item
+    По условию:
+    \[\E(X) = 2\]
+    \[\Var(X) = 6\]
+
+    $\P(|X - 2| \leq10)$ - похоже на неравенство Чебышева, но знак неравенства в другую сторону
+
+    \[\P(|X-2| \geq 10) \leq \frac{\Var(X)}{100}\]
+
+    \[\P(|X-2| \leq 10) \geq 1 - \frac{\Var(X)}{100} = 0.94\]
+
+    Ответ: C
+
+\end{enumerate}
+
+\end{document}
